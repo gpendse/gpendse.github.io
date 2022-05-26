@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
+<html>
+
+	<head>
+		<title>iBET Documentation</title>
+		<link rel="stylesheet" type="text/css" href="stylefile_ibet.css" />
+	</head>
+	<body>
+
+		<div class="project-title">
+		<p><img src="ibet_logo.png" title="iBET logo" border="1" height="100px"></p>
+		<h2>iBET: Interactive Brain Extraction Tool</h2>
+		<h3>Author: <a href="http://www.gautampendse.com">Gautam V. Pendse</a></h3>
+		</div>		
+
+		<div class="abstract">
+		<h3>Abstract</h3>
+		<p>
+		<ul>
+			<li> iBET is an brain extraction tool which <u>interactively</u> segments a 3-D brain volume slice by slice. <br><br>
+
+			<li> iBET views a 2-D image as a graph G with pixels as a set of nodes that are 8-connected with their neighbors. <br><br>
+
+			<li> From this viewpoint, brain extraction is equivalent to the extraction of a particular <u>biologically relevant path</u> in the graph G. <br><br>
+
+			<li> iBET uses edge detection to compute local image gradient magnitude and direction and then assigns a cost of traveling from point i to point j such that the <u>cost is low if travel occurs along edges in the image</u>. <br><br>
+
+			<li> Finally, iBET interacts with the user and uses dynamic programming (or Bellman's optimality principle), to compute the <u>shortest path in G passing through user selected points</u> to extract an "optimal" closed boundary. <br><br>
+
+			<li> The extracted boundary is then filled using seeded region growth. <br>
+		
+		</ul>
+		</p>
+		</div>		
+
+		<div class="demonstration">
+
+		<h3>iBET Demo</h3>
+		
+			<p align="center">		
+			Click the play button to see how iBET performs brain extraction on an example rat brain.<br><br>
+			<embed align="center" src="100916T_4_scan6_mc_ibet_movie.avi" width="640" height="480" autoplay="false" controller="true" cache="true" type="video/x-msvideo" alt="ibet demo" title="ibet demo" </embed>
+			</p> <br>
+		
+			<p align="center">
+			Here's an overlay figure showing how iBET extracted mask looks like (using another example rat brain):<br><br>
+			<img src="example_ibet.png" alt="example_ibet" title="example_ibet" height="400" width="1073" align="middle" border="5" class="special">
+			</p> <br>
+		
+			<p align="center">
+			Here's an overlay figure showing how FSL BET extracted mask looks like (on the same example rat brain as above):<br><br>
+			<img src="example_bet.png" alt="example_bet" title="example_bet" height="400" width="1073" align="middle" border="2" class="special">
+			</p>
+
+		</div>		
+		
+			
+		<!--
+		<div class="demonstration">
+		<h3>iBET Demo 2</h3>
+		<p align="center">
+		Click the play button to see iBET demo on an example rat brain.<br>
+		<embed align="center" src="101014T_10_scan6_mc_ibet_movie.avi" width="640" height="480" autoplay="false" controller="true" cache="true" type="video/x-msvideo" </embed>
+		</p>
+		</div>
+		-->
+		
+		<div class="coreidea">
+		<h3>How do I use iBET?</h3>
+		<p>
+		<ol>
+			<li> iBET interacts with the user through mouse clicks. There are 3 types of mouse clicks: (1) Left click (2) Middle click and (3) Right click. On a Mac computer, the mouse can be configured by going to System Preferences => mouse. The Left button should be associated to the "Primary Button", the Right button should be associated to the "Secondary Button" and the Middle button should be associated to "Button 3". <br><br>
+
+			<li> iBET processes a 3-D image slice by slice. For each slice, iBET starts by prompting the user to <u>select a point on the boundary</u> of the region of interest using a Left click. This point is then labelled temporarilly as the "starting point" by iBET.<br><br>
+	
+			<li> iBET will now compute the <u>shortest path</u> (using a cost function that favours travel along edges) from the "starting point" to all other points in the image using dynamic programming. This usually takes < 1 sec. <br><br>
+
+			<li> At this point, if the user Left clicks on any point in the image then iBET displays (but does not finalize) the computed shortest path between the "starting point" and the Left clicked point in addition to the currently finalized full path. If the user likes the displayed path to the currently Left clicked point, then this point can be finalized by a Middle click on the same point. In general, Middle clicking any point will: <br><br>
+				<ol>
+					<li><u>finalize the path segment</u> from the "starting point" to the Middle clicked point and add the finalized path segment to the full path.<br><br>
+					<li> set the Middle clicked point as the <u>"new starting point"</u>. <br><br>
+				</ol>
+			<li> Steps (3) and (4) are repeated until the path is almost closed. When the path is almost closed then step (6) should be used instead of step (4). <br><br>
+
+			<li> If the user Right clicks on a point (instead of Middle clicking) then: <br><br>
+				<ol>
+					<li> the path segment from the "starting point" to the Right clicked point will be <u>finalized and added to the full path</u> as before. <br><br>
+					<li> the Right clicked point will be set as the <u>"new starting point"</u> as before. <br><br>
+					<li> in addition, a shortest path from the <u>"new starting point"</u> in 2 above to the <u>"very first user selected point"</u> will also be computed and added to the full path. This is done to <u>"close the path"</u>. <br><br>					
+				</ol>
+
+			<li> After step (6), iBET region fills and shows the computed brain mask. <br><br>
+				<ol>
+					<li>If the user likes the displayed brain mask then he/she may simply press <u>any mouse button</u> to go on to process the next slice. <br><br>
+					<li> If the user does not like the displayed brain mask, then <u>any key on the keyboard</u> can be pressed to re-create the mask for the present slice. <br>
+				</ol>
+		</ol>
+		</p>
+		</div>		
+
+		<div class="coreidea">
+		<h3>Usage, Inputs and Outputs</h3>
+		<p>		
+		<ul>
+			<b>Usage:</b> <br><br>
+			<font face="monospace">brain_extract( func_file, output_file )</font> <br><br>			
+			
+			<b>Inputs:</b> <br><br>
+			<ol>
+			<li><div><font face="monospace">func_file</font> = 3-D or 4-D .nii.gz (NIFTI) functional file to be brain extracted (.nii.gz). If 4-D, only the <u>first</u> 3-D volume will be used for creating the brain mask.</div>	<br>
+
+			<li><div><font face="monospace">output_file</font> = name of the output brain mask (.nii.gz)</div>
+			</ol> <br>
+		
+			<b>Outputs:</b> <br><br>
+			<ol>
+			<li> <div>a .nii.gz (NIFTI) file containing the extracted brain mask with name <font face="monospace">output_file</font></div> <br>
+			<li> <div>a .nii.gz (NIFTI) file containing the extracted brain mask with suffix <font face="monospace">_dil_ero.nii.gz</font>. This file contains the extracted brain mask after slice-wise dilation and erosion (to correct for small boundary defects)</div>
+			</ol>
+
+		</ul>
+		</p>
+		</div>				
+
+		<div class="coreidea">
+		<h3>Proposed Extensions</h3>
+		<p>		
+		<ul>
+			<li> The current version of iBET can perform required graph computations in <u>real time</u> for images of size 64 x 64. A more efficient version of iBET is easy to implement using a data structure called a <u>priority queue</u>. <br><br>
+			<li> In fact, I have already implemented a priority queue in Matlab. Unfortunately, the while loops in Matlab are not fast enough to realize the advantages of using a priority queue. <br><br>
+			<li> It would be an interesting exercise to re-program all code in Java and use the power of priority queues. Once this is done, images as large as <u>500 x 500</u> should be easily processed in real time.	<br>
+		</ul>
+		</p>
+
+		</div>		
+		
+		<div class="refs">
+		<h3>Key references</h3>
+		<ol>		
+		<li> Mortensen, E. N. and Barrett, W. A. (1998). "Interactive Segmentation with Intelligent Scissors". Graphical Models and Image Processing 60:5, pp. 349-384. <a href="refs/seg_scissors.pdf">[pdf]</a> (Primary paper) <br><br>
+
+		<li> Dijkstra, E. W. (1959). "A note on two problems in connexion with graphs". Numerische Mathematik 1, pp. 269-271. <a href="refs/dijkstra.pdf">[pdf]</a> (Dijkstra's famous algorithm) <br><br>
+		
+		<li> Bellman, R. (1957). "Dynamic Programming". Princeton University Press. Dover paperback edition, 2003. (Seminal work on dynamic programming) <br><br>
+
+		<li> Falcao, A. X., Stolfi, J. and Lotufo, R. (2004). "The Image Foresting Transform: Theory, Algorithms, and Applications". IEEE Transactions on Pattern Analysis and Machine Intelligence 26:1, pp. 19-29. <a href="refs/IFT.pdf">[pdf]</a> (Related work) <br>
+
+		</ol>
+		</div>
+
+		<div class="copyright">
+		<p align="center"> Copyright &#169; 2010, Gautam V. Pendse <br> e-mail: <font face="monospace">gpendse@mclean.harvard.edu</font> </p>
+		</div>
+
+
+	</body>
+</html>	

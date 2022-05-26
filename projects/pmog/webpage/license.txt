@@ -1,0 +1,16 @@
+=========================================================================
+   COPYRIGHT NOTICE AND LICENSE INFO:
+
+   * Copyright (C) 2010, Gautam V. Pendse, McLean Hospital
+   
+   * Manuscript:
+   
+       Gautam V. Pendse, "PMOG: The projected mixture of Gaussians model with application to blind source separation", arXiv:1008.2743v1 [stat.ML, cs.AI, stat.ME], 46 pages, 9 figures, 2010. [5.5 MB] 
+
+   * License: 
+ 
+ 	I hereby agree to use the software file pmog_webpage_code_data_demos_for_reviewers.zip (the Software) solely for the purpose of reviewing the manuscript entitled “PMOG: The projected mixture of Gaussians model with application 
+ 	to blind source separation”, by Gautam V. Pendse, and I agree not to transfer the  Software to any third party or to use it for commercial purposes or for any purpose other than the review of said manuscript. 
+=========================================================================
+
+

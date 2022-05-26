@@ -1,0 +1,137 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>Sample data for C-SVM vs. B-SVM comparison</title><meta name="generator" content="MATLAB 7.9"><meta name="date" content="2011-07-07"><meta name="m-file" content="README"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>Sample data for C-SVM vs. B-SVM comparison</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Copyright Notice</a></li><li><a href="#3">Description of the .mat file:</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> z = README()
+</pre><h2>Copyright Notice<a name="2"></a></h2><pre class="codeinput"><span class="comment">%==========================================================================</span>
+<span class="comment">%</span>
+<span class="comment">%       COPYRIGHT NOTICE AND LICENSE INFO:</span>
+<span class="comment">%</span>
+<span class="comment">%       Copyright (c) 2011, Gautam V. Pendse</span>
+<span class="comment">%</span>
+<span class="comment">%               E-mail : gautam.pendse@gmail.com</span>
+<span class="comment">%</span>
+<span class="comment">%                  URL : http://www.gautampendse.com</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">%       Example data by Gautam V. Pendse is licensed under a</span>
+<span class="comment">%       Creative Commons Attribution 3.0 Unported License</span>
+<span class="comment">%</span>
+<span class="comment">%==========================================================================</span>
+<span class="comment">%</span>
+<span class="comment">%==========================================================================</span>
+<span class="comment">%</span>
+<span class="comment">%               AUTHOR: GAUTAM V. PENDSE</span>
+<span class="comment">%               DATE: 7 July 2011</span>
+<span class="comment">%</span>
+<span class="comment">%==========================================================================</span>
+<span class="comment">%</span>
+</pre><h2>Description of the .mat file:<a name="3"></a></h2><p>(1) Name of the file containing data = demo_data.mat</p><p>(2) To load the data in matlab, type:</p><pre>      data = load('demo_data.mat')</pre><pre>   data is a structure with 2 fields: X and y</pre><p>(3) data.X = 2 by 450 matrix containing 2-D feature vectors</p><p>(4) data.y = 1 by 450 vector containing labels (+1 or -1) for each feature vector</p><pre class="codeinput"><span class="keyword">end</span>
+</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.9<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Sample data for C-SVM vs. B-SVM comparison
+%%
+function z = README()
+%% Copyright Notice
+%==========================================================================
+%
+%       COPYRIGHT NOTICE AND LICENSE INFO:
+%
+%       Copyright (c) 2011, Gautam V. Pendse
+%
+%               E-mail : gautam.pendse@gmail.com
+%
+%                  URL : http://www.gautampendse.com
+%
+%
+%       Example data by Gautam V. Pendse is licensed under a 
+%       Creative Commons Attribution 3.0 Unported License
+%
+%==========================================================================
+%
+%==========================================================================
+%
+%               AUTHOR: GAUTAM V. PENDSE                                  
+%               DATE: 7 July 2011                                   
+%
+%==========================================================================
+%
+%% Description of the .mat file:
+% 
+% (1) Name of the file containing data = demo_data.mat
+%
+% (2) To load the data in matlab, type:
+%
+%        data = load('demo_data.mat')
+%       
+%     data is a structure with 2 fields: X and y
+%
+% (3) data.X = 2 by 450 matrix containing 2-D feature vectors
+%        
+% (4) data.y = 1 by 450 vector containing labels (+1 or -1) for each feature vector
+%
+end
+
+##### SOURCE END #####
+--></body></html>

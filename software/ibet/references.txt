@@ -1,0 +1,13 @@
+References:
+
+U. Montanari, "On the Optimal Detection of Curves in NoisyPictures," Communications QI' ACM, Vol. 14, May 1971,pp. 335-345.
+
+A. Martelli, "An Application of Heuristic Search Methods to Edgeand Contour Detection," Communications QI' ACM, February 1976,pp. 73-83.
+
+Y. P. Chien and K. S. Fu, “A Decision Function Method for Boundary Detection,” Computer Graphics and Image Pro-cessing, vol. 3, no. 2, pp. 125-140, June 1974.
+
+Bellman, Richard (1957), Dynamic Programming, Princeton University Press. Dover paperback edition (2003)
+
+Dijkstra, E. W. (1959). "A note on two problems in connexion with graphs". Numerische Mathematik 1: 269–271.
+
+Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Stein, Clifford (2001). "Section 24.3: Dijkstra's algorithm". Introduction to Algorithms (Second ed.). MIT Press and McGraw-Hill. pp. 595–601.

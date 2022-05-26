@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
+<html>
+
+	<head>
+		<title>Projected MOG</title>
+		<link rel="stylesheet" type="text/css" href="stylefile.css" />
+	</head>
+	<body>
+		<div class="project-title">
+		<p><img src="pmog.jpg" title="PMOG logo" border="1" height="100px"></p>
+		<h2>PMOG: The projected mixture of Gaussians model with application to blind source separation</h2>
+		<h3>Author: <a href="http://www.gautampendse.com">Gautam V. Pendse</a></h3>
+		</div>		
+
+		<div class="abstract">
+		<h3>Abstract</h3>
+		<p>
+		We extend the mixtures of Gaussians (MOG) model to the projected mixture of Gaussians (PMOG) model. In the PMOG model, we assume that q dimensional input data points z_i are projected by a q dimensional vector w into 1-D variables u_i. The projected variables u_i are assumed to follow a 1-D MOG model. In the PMOG model, we maximize the likelihood of observing u_i to find both the model parameters for the 1-D MOG as well as the projection vector w. First, we derive an EM algorithm for estimating the PMOG model. Next, we show how the PMOG model can be applied to the problem of blind source separation (BSS). In contrast to conventional BSS where an objective function based on an approximation to differential entropy is minimized, PMOG based BSS simply minimizes the differential entropy of projected sources by fitting a flexible MOG model in the projected 1-D space while simultaneously optimizing the projection vector w. The advantage of PMOG over conventional BSS algorithms is the more flexible fitting of non-Gaussian source densities without assuming near-Gaussianity (as in conventional BSS) and still retaining computational feasibility.
+		</p>
+		</div>		
+
+
+		<div class="coreidea">
+
+		<h3>Core idea</h3>
+		<ol>
+		<li> In a seminal paper, Hyvarinen et al. (1998) developed approximations to the differential entropy of a random variable using a maximum entropy distribution (MED) approach. This MED distribution is assumed by Hyvarinen et al. (1998) to be "not very far from a Gaussian distribution". The theory developed in this paper is central to the operation of several ICA algorithms such as FastICA (FICA). <br><br>
+		<li> In another seminal paper, Attias et al. (1999) developed a general solution to the BSS problem where the latent source density was modeled as a "factorial MOG" density. This significant advance removed the "near Gaussianity" assumption on latent source densities. In addition, Attias et al. (1999) developed an expectation maximization (EM) algorithm for the exact maximum likelihood (ML) solution of the BSS problem. <br><br>
+		<li> However the exact ML approach of Attias et al. (1999) becomes computationally intractable for >13 latent sources and one has to resort to approximate variational inference. In addition, the approach of Attias et al. assumes "exact independence" between latent sources, i.e., does not allow partial dependence between sources. <br><br>
+		
+		<li> The present work is mainly inspired by the work of Hyvarinen et al. (1998) and Attias et al. (1999). The main contributions of this work are: <br><br>
+			<ol class="alpha"> 
+				<li> Development of the PMOG model including an EM algorithm for its estimation <br> <br>
+				<li> Removing the "near-Gaussianity" assumption in negentropy approximations of Hyvarinen et al. (1998) via the PMOG model <br><br>
+				<li> Retaining computational feasibility for >13 sources <br><br>
+				<li> Allowing partial dependence betweeen latent sources <br><br>
+			</ol>
+		</ol>		
+		</div>
+		
+		<div class="refs">
+		<h3>Key references</h3>
+		<ol>		
+		<li> Gautam V. Pendse, "PMOG: The projected mixture of Gaussians model with application to blind source separation", arXiv:1008.2743v1 [stat.ML, cs.AI, stat.ME], 46 pages, 9 figures, 2010. [5.5 MB] (submitted) <a href="pendse_pmog_2010.pdf">[download pdf <img src="pdficon_large.gif" height="20px">]</a> (this work) <br><br>
+
+		<li> A. Hyvarinen, "New approximations of differential entropy for independent component analysis and projection pursuit". Advances in Neural Information Processing Systems, 10:273-279, 1998. [168 KB] <a href="NIPS_Hyvarinen_negentropy.pdf">[download pdf <img src="pdficon_large.gif" height="20px">]</a> (related work) <br><br>
+		<li> H. Attias. "Independent factor analysis". Neural Computation, 11:803-851, 1999. [647 KB] <a href="Neural_Computation_Attias_ifa.pdf">[download pdf <img src="pdficon_large.gif" height="20px">]</a> (related work)
+		
+		</ol>
+		</div>
+
+		<div class="figures">
+		<h3>Figures with captions</h3>
+		<ol>
+		<li> <a href="figures_with_captions/pendse_figure1_caption.tiff">Figure1 [Pictorial depiction of the PMOG model]</a>
+		<li> <a href="figures_with_captions/pendse_figure2_caption.tiff">Figure2 [EM algorithm for estimating the PMOG model]</a>
+		<li> <a href="figures_with_captions/pendse_figure3_caption.tiff">Figure3 [Simulation study comparing PMOG with FICA]</a>
+		<li> <a href="figures_with_captions/pendse_figure4_caption.tiff">Figure4 [Original and mixed sources for natural image dataset 1]</a>
+		<li> <a href="figures_with_captions/pendse_figure5_caption.tiff">Figure5 [BSS performance for natural image dataset 1]</a>
+		<li> <a href="figures_with_captions/pendse_figure6_caption.tiff">Figure6 [Original and mixed sources for natural image dataset 2]</a>
+		<li> <a href="figures_with_captions/pendse_figure7_caption.tiff">Figure7 [BSS performance for natural image dataset 2]</a>
+		<li> <a href="figures_with_captions/pendse_figure8_caption.tiff">Figure8 [Illustrative PMOG likelihood evolution and fitted model]</a>
+		<li> <a href="figures_with_captions/pendse_figure9_caption.tiff">Figure9 [Features and estimation techniques of different BSS algorithms]</a>
+		</ol>
+		</div>
+
+		<div class="download-code">
+		<h3>Download Code</h3>
+Matlab code for estimating the PMOG model and performing PMOG based BSS can be downloaded here: <a STYLE="text-decoration:none" href="../pmog_webpage_code_data.zip">pmog_webpage_code_data.zip&nbsp<img src="zip_icon.jpg" height="20px"></a>. This software is freely available under the terms of the <a href="license.html">license</a> described below. Code distribution includes the following directories:
+		
+		<p>
+		<h4>webpage</h4>
+This directory contains a standalone version of this webpage <font face="monospace">pmog.html</font> for offline browsing.
+		</p>
+
+		<p>
+		<h4>code</h4>		
+This directory contains code for:
+<ol> 
+<li> estimating a mixture of PPCA model <font face="monospace">ppca_mm.m</font> <br><br>
+<li> estimating a PMOG model <font face="monospace">projected_mog_ica.m</font> <br><br>
+<li> doing orthogonal and non-orthogonal PMOG based BSS <font face="monospace">ppca_mm_ica.m</font> and <font face="monospace">ppca_mm_ica_no_orth.m</font> <br><br>
+<li> running simulations on synthetic data similar to that in the paper <font face="monospace">create_mog_source_mixture.m, projected_mog_ica_test.m</font> <br><br>
+<li> component matching across multiple runs of BSS <font face="monospace">raicar_type_sorting_mat.m</font> <br><br>
+<li> running the 3 demos (see below), <font face="monospace">pmog_demo1.m, pmog_demo2.m</font> and <font face="monospace">pmog_demo3.m</font>
+</ol>
+		</p>
+
+		<p>
+		<h4>data</h4>
+This directory contains the following data:
+<ol>
+	<li> Natural image data used in the paper can be found in <font face="monospace">image_pmog_data1.mat</font> and <font face="monospace">image_pmog_data2.mat</font>. Each image was individually pre-processed by making it zero mean and unit standard deviation prior to further processing. Here's a <a href="../demos/preprocess_image_html/preprocess_image.html">step by step example of pre-processing</a>. Code for pre-processing natural images from BSD <font face="monospace">preprocess_image.m</font> is included. Here's a <a href="../data/image_data_readme_html/image_data_readme.html">readme file for image data</a>.<br><br>
+
+	<li> Synthetic data can be found in <font face="monospace">synthetic_pmog_data.mat</font>. Here's a <a href="../data/synthetic_data_readme_html/synthetic_data_readme.html">readme file for synthetic data</a>. <br><br>
+</ol>
+
+		</p>
+
+		<p>
+		<h4>demos</h4>
+This directory contains the results of running <font face="monospace">pmog_demo1.m, pmog_demo2.m</font> and <font face="monospace">pmog_demo3.m</font> that have been saved as <font face="monospace">html</font> files:
+<ol>
+	<li> <font face="monospace">pmog_demo1.m</font> illustrates the application of PMOG based BSS to a synthetic mixture generated using the FastICA package based on the work of Hyvarinen et al. (1998). Here's a webpage containing the <a href="../demos/pmog_demo1_html/pmog_demo1.html">step by step procedure and results of running <font face="monospace">pmog_demo1.m</font></a>.  <br><br>
+
+	<li> <font face="monospace">pmog_demo2.m</font> illustrates the application of PMOG based BSS to a synthetic mixture generated using MOG source densities using the included code <font face="monospace">create_mog_source_mixture.m</font>. Here's a webpage containing the <a href="../demos/pmog_demo2_html/pmog_demo2.html">step by step procedure and results of running <font face="monospace">pmog_demo2.m</font></a>. <br><br>
+
+	<li> <font face="monospace">pmog_demo3.m</font> illustrates the application of PMOG based BSS to natural image data from the Berkeley Segmentation Dataset and Benchmark (BSD): <a href="http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/segbench/">http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/segbench/</a>. This data is also included in the above zip file (in a Matlab <font face="monospace">.mat</font> file called <font face="monospace">image_pmog_data2.mat</font>). <br> <br>
+
+		In <font face="monospace">pmog_demo3.m</font> we use non-orthogonal PMOG to account for the fact that the sources are in fact not exactly independent. Here's a webpage containing the <a href="../demos/pmog_demo3_html/pmog_demo3.html">step by step procedure and results of running <font face="monospace">pmog_demo3.m</font></a>. This demo essentially regenerates results shown in <a href="figures_with_captions/pendse_figure7_caption.tiff">Figure7 [BSS performance for natural image dataset 2]</a> from the paper. 
+</ol>
+		</p>
+
+		
+
+
+		<p>
+		<h4><a name="pmog_license">License</a></h4> 		
+		Software for PMOG based BSS by <a href="http://gautampendse.com">Gautam V. Pendse</a> is licensed under the terms described in the file <a href="license.html">license.html</a>. Permissions beyond the scope of this license may be available at gautam dot pendse at gmail dot com. 
+		</p>
+
+		</div>
+
+		<div>
+		<p align="center"> Copyright &#169; 2010, Gautam V. Pendse <br> e-mail: <font face="monospace">gpendse@mclean.harvard.edu</font> </p>
+		</div>
+
+	</body>
+</html>

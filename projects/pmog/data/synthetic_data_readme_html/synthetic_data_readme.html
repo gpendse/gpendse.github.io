@@ -1,0 +1,152 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>synthetic_data_readme</title><meta name="generator" content="MATLAB 7.9"><meta name="date" content="2010-10-18"><meta name="m-file" content="synthetic_data_readme"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Description of Synthetic Data</a></li><li><a href="#2">Copyright Notice</a></li><li><a href="#3">Explanation of the structure fields in the file synthetic_pmog_data.mat</a></li></ul></div><h2>Description of Synthetic Data<a name="1"></a></h2><pre class="codeinput"><span class="keyword">function</span> z = synthetic_data_readme()
+</pre><h2>Copyright Notice<a name="2"></a></h2><pre class="codeinput"><span class="comment">%=========================================================================</span>
+<span class="comment">%   COPYRIGHT NOTICE AND LICENSE INFO:</span>
+<span class="comment">%</span>
+<span class="comment">%   * Copyright (C) 2010, Gautam V. Pendse, McLean Hospital</span>
+<span class="comment">%</span>
+<span class="comment">%   * Readme file for synthetic data contained in synthetic_pmog_data.mat used in the paper:</span>
+<span class="comment">%</span>
+<span class="comment">%       Gautam V. Pendse, "PMOG: The projected mixture of Gaussians model with application to blind source separation",</span>
+<span class="comment">%       arXiv:1008.2743v1 [stat.ML, cs.AI, stat.ME], 46 pages, 9 figures, 2010. [5.5 MB]</span>
+<span class="comment">%</span>
+<span class="comment">%   * License: Please see the file license.txt included with the code distribution</span>
+<span class="comment">%              </span>
+<span class="comment">%</span>
+<span class="comment">%   * If you use this code in your own work or alter this code, please cite the above paper. This code is distributed "as is" and no</span>
+<span class="comment">%   guarantee is given as to the accuracy or validity of the results produced by running this code. No responsibility will be assumed</span>
+<span class="comment">%   of the effects of running this code or using its results in any manner.</span>
+<span class="comment">%</span>
+<span class="comment">%   * AUTHOR: GAUTAM V. PENDSE</span>
+<span class="comment">%     DATE: 2nd April 2010</span>
+<span class="comment">%=========================================================================</span>
+</pre><h2>Explanation of the structure fields in the file synthetic_pmog_data.mat<a name="3"></a></h2><div><ul><li><tt>nruns</tt> - number of runs of PMOG and FICA</li></ul></div><div><ul><li><tt>nsources</tt> - number of sources in the BSS mixture</li></ul></div><div><ul><li><tt>cmsm</tt> - structure returned by create_mog_source_mixture.m</li></ul></div><div><ul><li><tt>S</tt> - matrix of MOG souces. Each row is one source</li></ul></div><div><ul><li><tt>best_match_fica_for_source</tt> - best match correlation coefficients between true sources and FICA estimated sources across runs</li></ul></div><div><ul><li><tt>best_match_pmog_for_source</tt> - best match correlation coefficients between true sources and PMOG estimated sources across runs</li></ul></div><p><b>The following variables change in each run</b></p><div><ul><li><tt>A</tt> - mixing matrix, a different mixing matrix is used for each run</li></ul></div><div><ul><li><tt>X</tt> - mixed sources using the current mixing matrix</li></ul></div><div><ul><li><tt>fica</tt> - sources returned by FICA in the current iteration</li></ul></div><div><ul><li><tt>mat_array_fica</tt> - input for raicar_type_sorting_mat.m</li></ul></div><div><ul><li><tt>rcr_fica</tt> - structure returned by raicar_type_sorting_mat.m</li></ul></div><div><ul><li><tt>pmi</tt> - sources returned by PMOG in current iteration</li></ul></div><div><ul><li><tt>mat_array_pmog</tt> - input for raicar_type_sorting_mat.m</li></ul></div><div><ul><li><tt>rcr_pmog</tt> - structure returned by raicar_type_sorting_mat.m</li></ul></div><p class="footer"><br>
+      Published with MATLAB&reg; 7.9<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Description of Synthetic Data 
+function z = synthetic_data_readme()
+%% Copyright Notice
+%=========================================================================
+%   COPYRIGHT NOTICE AND LICENSE INFO:
+%
+%   * Copyright (C) 2010, Gautam V. Pendse
+%   
+%   * Readme file for synthetic data contained in synthetic_pmog_data.mat used in the paper:
+%   
+%       Gautam V. Pendse, "PMOG: The projected mixture of Gaussians model with application to blind source separation", 
+%       arXiv:1008.2743v1 [stat.ML, cs.AI, stat.ME], 46 pages, 9 figures, 2010. [5.5 MB] 
+%
+%   * License: This code is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+%              (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%   
+%   * If you use this code in your own work or alter this code, please cite the above paper. This code is distributed "as is" and no 
+%   guarantee is given as to the accuracy or validity of the results produced by running this code. No responsibility will be assumed 
+%   of the effects of running this code or using its results in any manner.
+%
+%   * AUTHOR: GAUTAM V. PENDSE
+%     DATE: 2nd April 2010
+%=========================================================================
+
+
+
+%% Explanation of the structure fields in the file synthetic_pmog_data.mat
+%
+% * |nruns| - number of runs of PMOG and FICA 
+%
+% * |nsources| - number of sources in the BSS mixture
+%
+% * |cmsm| - structure returned by create_mog_source_mixture.m
+%
+% * |S| - matrix of MOG souces. Each row is one source
+%
+% * |best_match_fica_for_source| - best match correlation coefficients between true sources and FICA estimated sources across runs
+%
+% * |best_match_pmog_for_source| - best match correlation coefficients between true sources and PMOG estimated sources across runs
+%
+% *The following variables change in each run* 
+%%
+% 
+% * |A| - mixing matrix, a different mixing matrix is used for each run
+%
+% * |X| - mixed sources using the current mixing matrix
+%
+% * |fica| - sources returned by FICA in the current iteration
+%
+% * |mat_array_fica| - input for raicar_type_sorting_mat.m
+%
+% * |rcr_fica| - structure returned by raicar_type_sorting_mat.m
+%
+% * |pmi| - sources returned by PMOG in current iteration
+%
+% * |mat_array_pmog| - input for raicar_type_sorting_mat.m
+%
+% * |rcr_pmog| - structure returned by raicar_type_sorting_mat.m 
+
+
+
+
+##### SOURCE END #####
+--></body></html>

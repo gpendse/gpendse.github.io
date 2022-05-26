@@ -1,0 +1,126 @@
+ol.alpha {list-style-type: lower-alpha;}
+
+
+.project-title
+{
+background-color:white;
+text-align:center;
+font-family:"Verdana", Sans-serif;
+margin:25px 25px 25px 25px;
+padding:25px 25px 25px 25px;
+border-style:solid;
+border-width:5px;
+border-color:#B0B0B0;
+}
+
+.project-title p
+{
+text-align:center;
+}
+
+.project-title img
+{
+border-color:blue;
+}
+
+.project-title h3
+{
+text-align:center;
+}
+
+.abstract
+{
+background-color:white;
+text-align:justify;
+font-family:"Verdana", Sans-serif;
+margin:25px 25px 25px 25px;
+padding:25px 25px 25px 25px;
+border-style:solid;
+border-width:3px;
+border-color:#B0B0B0;
+}
+
+.abstract h3
+{
+text-align:center;
+}
+
+
+
+.coreidea
+{
+background-color:white;
+text-align:justify;
+font-family:"Verdana", Sans-serif;
+margin:25px 25px 25px 25px;
+padding:25px 25px 25px 25px;
+border-style:solid;
+border-width:3px;
+border-color:#B0B0B0;
+}
+.coreidea h3
+{
+text-align:center;
+}
+
+.refs
+{
+background-color:white;
+text-align:justify;
+font-family:"Verdana", Sans-serif;
+margin:25px 25px 25px 25px;
+padding:25px 25px 25px 25px;
+border-style:solid;
+border-width:3px;
+border-color:#B0B0B0;
+}
+.refs h3
+{
+text-align:center;
+}
+
+.figures
+{
+background-color:white;
+text-align:justify;
+font-family:"Verdana", Sans-serif;
+margin:25px 25px 25px 25px;
+padding:25px 25px 25px 25px;
+border-style:solid;
+border-width:3px;
+border-color:#B0B0B0;
+}
+.figures h3
+{
+text-align:center;
+}
+
+.download-code
+{
+background-color:white;
+text-align:justify;
+font-family:"Verdana", Sans-serif;
+margin:25px 25px 25px 25px;
+padding:25px 25px 25px 25px;
+border-style:solid;
+border-width:3px;
+border-color:#B0B0B0;
+}
+.download-code h3
+{
+text-align:center;
+}
+
+.copyright h3
+{
+text-align:center;
+font-family:"Verdana", Sans-serif;
+}
+
+.demo
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	text-align: center;	
+	
+}

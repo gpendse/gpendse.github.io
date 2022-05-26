@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
+<html>
+
+	<head>
+		<title>RAICAR_N</title>
+		<link rel="stylesheet" type="text/css" href="stylefile_raicarN_white.css" />
+	</head>
+	<body>
+		<div class="project-title">
+		<p><img src="raicarN_logo.png" title="raicarN logo" border="1" height="100px"></p>
+		<h2>Reproducible Resting State Network (RSN) detection with RAICAR_N</h2>
+		<h3>Author: <a href="http://www.gautampendse.com">Gautam V. Pendse</a></h3>
+		</div>		
+
+		<div class="abstract">
+		<h3>Abstract</h3>
+		<p>
+		Independent component analysis (ICA) is a popular analysis technique for neuroimaging data. Spatial ICA (SICA) decomposes the time by space functional MRI (fMRI) matrix into a set of 1-D basis time courses and their associated 3-D spatial maps which are optimized for non-Gaussianity and hence mutual independence. 
+        <ul>
+        	<li> When applied to resting state fMRI (rsfMRI), SICA produces several interesting spatial components, the so called resting state networks (RSNs). <br><br>
+            <li> The mixing matrix in ICA is identifiable provided that the number of Gaussian sources in the mixture is at most 1. Unfortunately, the contrast function in ICA depends on the finite observed data and is non-convex with potentially many local minima. This means that <b><i>each run</i></b> of ICA will produce potentially different RSN networks for the same data! <br><br>
+            <li> A technique to deal with the run to run variability of ICA was proposed in Yang et al. (2008) in their algorithm RAICAR (Ranking and averaging independent component analysis by reproducibility). The basic idea is to select only those ICA components as "interesting" which show a high run to run "reproducibility". <br><br>
+            <li> We propose a simple enhancement to the original RAICAR algorithm to attach "reproducibility" <b><i>p-values</i></b> to each ICA component from RAICAR.
+        </ul>        
+        </p>
+		</div>		
+
+
+		<div class="coreidea">
+		<h3>Main ideas</h3>
+		<ol>       
+        <li> The reproducibility indices calculated in RAICAR differ in magnitude significantly depending on whether: <br><br>
+
+			<ul> <li> (a)	Input to RAICAR is generated using multiple ICA runs on the same data or <br><br>
+				 <li> (b)	Input to RAICAR comes from multiple ICA runs on varying data sets (e.g. multiple between and across subject runs) <br><br>
+			</ul>
+        
+        <li> Obviously, the reproducibility indices are much lower in case (b) above since we account for both within subject and between subjects variability in estimating ICs. Note that case (b) is of great interest from a practical point of view since we are often interested in making statements about a group of subjects. <br><br>
+        
+        <li> Hence it is clear that a cutoff on RAICAR reproducibility values for the purposes of selecting the "highly reproducible" components should be data dependent. <br><br>
+
+        <li> We propose to extend the original RAICAR algorithm by using simulation to automatically generate p-values for each reproducible component. This allows for an objective cutoff specification for extracting reproducible components (e.g. reproducible at p < 0.05).  We call the resulting algorithm RAICAR_N (N stands for null hypothesis test).          
+		</ol>
+		</div>
+		
+		<div class="refs">
+		<h3>Key references</h3>
+		<ol>		
+
+		 <li> Pendse GV, Borsook D and Becerra L. A simple and objective method for reproducible resting state network (RSN) detection in fMRI. <i><a href="http://arxiv.org/abs/1108.2248">arXiv:1108.2248v1 [stat.AP]</a></i>, <i>submitted</i>, May, 2011. <a STYLE="text-decoration:none" href="pendse_raicar_N_arxiv.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <b><i>(this work)</i></b> <br><br>
+
+         <li> Rao CR. A Decomposition Theorem for Vector Variables with a Linear Structure. <i>The Annals of Mathematical Statistics</i>, 40(5):1845-1849, 1969. <br><br>
+         <!--<a STYLE="text-decoration:none" href="Rao1969.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>-->
+
+        <li> Theis FJ. A New Concept for Separability Problems in Blind Source Separation. <i>Neural Computation</i>, 16:1827-1850, 2004. <br><br>
+        <!--<a STYLE="text-decoration:none" href="Theis2004.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>--> 
+
+		<li> Yang Z, LaConte S, Weng X and Hu X. Ranking and Averaging Independent Component Analysis by Reproducibility (RAICAR). <i>Human Brain Mapping</i>, 29:711-725, 2008. <br><br>
+        <!--<a STYLE="text-decoration:none" href="Yang2008.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>-->
+        
+        <li> Beckmann CF, DeLuca M, Devlin JT and Smith SM. Investigations into resting-state connectivity using independent component analysis. <i>Philos. Trans. R. Soc. Lond. B. (Biol Sci)</i>, 360(1457):1001-1013, 2005. <br><br>
+        <!--<a STYLE="text-decoration:none" href="Beckmann2005.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>--> 
+        	
+         <li> Smith SM, Fox PT, Miller KL, Glahn DC, Fox PM, Mackay CE, Filippini N, Watkins KE, Toro R, Laird AR, and Beckmann CF. Correspondence of the brain's functional architecture during activation and rest. <i>Proc. Natl. Acad. Sci. U.S.A.</i>, 106(31):13040-13045, 2009. <br><br>
+         <!--<a STYLE="text-decoration:none" href="Smith2009.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>--> 
+            
+         <li> Beckmann CF and Smith SM. Probabilistic independent component analysis for functional magnetic resonance imaging. <i>IEEE Transactions on Medical Imaging</i>, 23:137-152, 2004. <br><br>
+         <!--<a STYLE="text-decoration:none" href="Beckmann2004.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>-->               	
+                       
+		</ol>
+		</div>
+
+		<div class="figures">
+		<h3><a name="figures">PDF Figures</a></h3>
+		<ol>
+		<li> <a href="figures_pdf/raicar_N_algorithm.pdf">RAICAR_N algorithm [pictorial description]</a>
+		<li> <a href="figures_pdf/raicar_N_flow.pdf">RAICAR_N flow [processing steps]</a>
+		</ol>
+		</div>
+
+		<div class="examples">
+                <h3> How does RAICAR_N enable the objective selection of "reproducible" ICA components? </h3>
+				<ol>
+                    <li> Suppose an investigator performs group ICA on a set of subjects and sets the number of ICA components = 40. Should all 40 components be reported in a paper? How can the investigator select an "interesting subset" of 
+                    these 40 components for the purpose of reporting in a paper? <br><br>
+                    <li> Are we really interested in those ICA components that are applicable to a specific run of ICA on a specific set of subjects? <br><br>
+                    <li> Clearly, we are interested in only those ICA components that "generalize" well i.e., are "reproducible" across variations in the data (e.g., across subjects) as well as variations in multiple runs of ICA. A RAICAR analysis enables us to assign reproducibility 
+                    values to each ICA component. <br><br>
+                	<li> The typical values of normalized reproducibility obtained from RAICAR are dependent on the nature of data. <br><br>
+                    <li> When multiple ICA runs on a single subject are used as inputs to RAICAR, we typically get much higher values of normalized reproducibility compared to the case when combining multi subject ICA runs. <br><br>
+                    <li> The figure below illustrates this effect: <br><br>                   
+                    	<div style="text-align:center">
+                        <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+                        <tr>
+    						<th scope="col">Within subject ICA runs</th>
+    						<th scope="col">Across subjects ICA runs</th>
+  						</tr>
+                        <tr>
+                        <td>
+                            <div class="display_image">
+                            <img src="1subj/raicar_raicar.png" width="100%" alt="within subject multirun ICA based reproducibility values">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="display_image">
+                            <img src="23subj/rest23_ero_raicar.png" width="100%" alt="across subject ICA run based reproducibility values">
+                            </div>
+                        </td>
+                        </tr>
+                        </table>        
+                        </div>
+                    <li> In RAICAR_N, we are able to compute p-values for each ICA component (see the figure titled RAICAR_N algorithm in the <a href="#figures">PDF Figures</a> section for a pictorial description of RAICAR_N). Consequently, as shown in the figure below the same and <b><i>objective p-value cutoffs</i></b> (e.g. p < 0.05) can be used to identify reproducible components within and across subjects.<br><br>    
+                    	<div style="text-align:center">
+                        <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+                        <tr>
+    						<th scope="col">Within subject ICA runs</th>
+    						<th scope="col">Across subjects ICA runs</th>
+  						</tr>
+                        <tr>
+                        <td>
+                            <div class="display_image">
+                            <img src="1subj/raicar_pval_raicar.png" width="100%" alt="within subject reproducibility p-values">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="display_image">
+                            <img src="23subj/rest23_ero_pval_raicar.png" width="100%" alt="across subject reproducibility p-values">
+                            </div>
+                        </td>
+                        </tr>
+                        </table>        
+                        </div>
+        		</ol>
+        </div>
+
+		<div class="examples">
+        <h3> How to choose the number of subjects per group ICA run? </h3>
+        
+        	<ol>
+        		<li> Suppose we have a group of N subjects. We randomly select L subjects and form a single group of subjects. <br><br>
+                <lI> We repeat this process K times to get K groups of L subjects each of which is subjected to a group ICA analysis. <br><br>
+                <li> Given the number of subjects N, how should we choose L and K? <br><br>
+                <li> The basic idea is to promote dataset diversity in the individual group ICA runs. The figures below explain the choice of L and K in detail. <br><br>
+                
+                <div style="text-align:center">
+            	<table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+            	<tr>
+            	<td>
+                	<div class="display_image">
+                	<img src="figures_pdf/choosing_L_A.png" width="100%" alt="Logic for choosing L and K given N">
+                	</div>
+            	</td>
+                <td>
+                	<div class="display_image">
+                	<img src="figures_pdf/choosing_L_B.png" width="100%" alt="P_XY versus L for a given N">
+                	</div>
+            	</td>
+            	</tr>
+            	</table>        
+            	</div>
+        	</ol>
+      	</div>
+
+
+		<div class="examples">
+        <h3> How to display the estimated non-Gaussian spatial structure in ICA maps? </h3>
+        
+        	<ol>
+        		<li> The output of a RAICAR_N analysis is a set of spatial ICA maps (either z-transformed maps or raw maps) concatenated into a 4-D volume. <br><br>
+                <lI> We do a voxelwise transformation to Normality using the voxelwise empirical cumulative distribution function. <br><br>
+                <li> Next, we submit the resulting 4-D volume to a voxelwise group analysis using ordinary least squares. The design matrix for group analysis depends on the question being considered. In our case, the design matrix
+                     was simply a single group average design. <br><br>
+                <li> The resulting t-statistic maps are subjected to Student t, Gamma_pos and Gamma_neg mixture modeling. The logic is that if the original ICA maps are pure Gaussian (i.e., have no interesting non-Gaussian structure) then the 
+                     result of a group average analysis will be a pure Student t map which will be captured by a single Student t (i.e., the Gamma_pos and Gamma_neg will be driven to 0 class fractions). Hence the null hypothesis will be correctly
+                     accounted for. If the Gamma distributions have > 0.5 posterior probability at some voxels then those voxels are displayed in color to indicate the presence of significant non-Gaussian structure over and above the background Student t
+                     distribution. <br><br>
+                <li> Examples of Studen t/Gamma_pos/Gamma_neg mixture modeling are shown below:<br><br>
+                
+                <div style="text-align:center">
+            	<table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+            	<tr>
+            	<td>
+                	<div class="display_image">
+                	<img src="figures_pdf/gen_mix_fit1.png" width="100%" alt="Example 1 of Student t, Gamma_pos, Gamma_neg mixture modeling">
+                	</div>
+            	</td>
+                <td>
+                	<div class="display_image">
+                	<img src="figures_pdf/gen_mix_fit2.png" width="100%" alt="Example 2 of Student t, Gamma_pos, Gamma_neg mixture modeling">
+                	</div>
+            	</td>
+            	</tr>
+            	</table>        
+            	</div>
+        	</ol>
+      	</div>
+		
+
+		<div class="examples">
+		<h3>Examples of the application of RAICAR_N to human rsfMRI data in single subject and group mode</h3>
+		rsfMRI data titled: <font face="monospace">Baltimore (Pekar, J.J./Mostofsky, S.H.; n = 23 [8M/15F]; ages: 20-40; TR = 2.5; # slices = 47; # timepoints = 123)</font> was downloaded from <a href="http://www.nitrc.org/">http://www.nitrc.org/</a>. Data was analyzed using tools from the FMRIB software library (FSL, <a href="http://www.fmrib.ox.ac.uk/fsl/">http://www.fmrib.ox.ac.uk/fsl/</a>). Preprocessing steps included motion correction, brain extraction, spatial smoothing with an isotropic Gaussian kernel of 5mm FWHM and 100s high-pass temporal filtering. Spatial ICA was performed using FSL MELODIC in either single subject or multi-subject temporal concatenation mode. In each case, we fixed the number of ICA components at 40. For temporal concatenation mode, single subject data was affinely registered to the MNI 152 brain and subsequently resampled to 4x4x4 resolution (MNI 4x4x4).	<br><br> 	  	  	
+    	
+        <!--
+        <h4 align="center">Single subject - multiple ICA runs</h4>
+        <hr><hr>        
+        <ol>        
+          <li> <h5><i>Reproducibility p-values</i></h5>
+          
+              Spatial ICA was run multiple times for a randomly chosen subject. The resulting set of ICA components across ICA runs were submitted to a RAICAR_N analysis. 
+              ICA components were sorted according to their reproducibility and p-values were computed for each ICA component. <br><br>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="1subj/raicar_raicar.png" width="100%" alt="Null distribution of normalized reproducibility">
+                  </div>
+              </td>
+              <td>
+                  <div class="display_image">
+                  <img src="1subj/raicar_pval_raicar.png" width="100%" alt="RAICAR_N p-values">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>
+        
+          <li> <h5><i>Top 35 components with highest reproducibility</i></h5>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="1subj/top35maps_summary.png" width="100%" alt="Top 35 high reproducibility maps">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>
+        </ol>
+        -->
+        
+        <hr><hr>
+        <h4 align="center">Multisubject with 1 ICA run per subject</h4>
+        <hr><hr>        
+        <ol>       
+          <li> <h5><i>Reproducibility p-values</i></h5>
+          
+              Spatial ICA was run once for each of the 23 subjects in their native space. The resulting set of ICA components across subjects were transformed to MNI 4x4x4 space and were submitted to a RAICAR_N analysis. 
+              ICA components were sorted according to their reproducibility and p-values were computed for each ICA component. <br><br>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="23subj/rest23_ero_raicar.png" width="100%" alt="Null distribution of normalized reproducibility">
+                  </div>
+              </td>
+              <td>
+                  <div class="display_image">
+                  <img src="23subj/rest23_ero_pval_raicar.png" width="100%" alt="RAICAR_N p-values">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>
+        
+          <li> <h5><i>Top 8 components with highest reproducibility compared with "standard" RSN maps found in literature</i></h5>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="23subj/top8maps_summary.png" width="100%" alt="Top 8 high reproducibility maps">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>
+              
+          <li> <h5><i>Summary</i></h5>
+          		When single subject ICA runs are combined across subjects: <br><br>
+          		<ul>
+              		<li> We are able to declare 4 "standard" RSNs as significantly reproducible at a p-value < 0.05. <br><br> 
+              		<li> There are 2 other "standard" RSNs that achieve a reproducibility p-value between 0.05 and 0.06. <br><br>
+              		<li> There are 2 other "non-standard" RSNs that are of interest: one achieves a p-value of 0.0125 and the other achieves a p-value of 0.05699. <br><br>
+              	</ul>
+        </ol>
+        
+        <hr><hr>
+        <h4 align="center">Random sets of 5 subjects - 50 group ICA runs</h4>
+        <hr><hr>        
+        <ol>        
+          <li> <h5><i>Reproducibility p-values</i></h5>
+          
+              5 subjects were drawn at random from the group of 23 subjects and submitted to a temporal concatenation based group ICA. This process was repeated 50 times and the resulting set of 50 group ICA maps were submitted to a RAICAR_N analysis. 
+              ICA components were sorted according to their reproducibility and p-values were computed for each ICA component. <br><br>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="50groupof5/50_group_of_5_raicar.png" width="100%" alt="Null distribution of normalized reproducibility">
+                  </div>
+              </td>
+              <td>
+                  <div class="display_image">
+                  <img src="50groupof5/50_group_of_5_pval_raicar.png" width="100%" alt="RAICAR_N p-values">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>
+        
+          <li> <h5><i>Top 15 components with highest reproducibility compared with "standard" RSN maps found in literature</i></h5>
+              
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="50groupof5/top15maps_summary.png" width="100%" alt="Top 15 high reproducibility maps">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div> 
+              
+          <li> <h5><i>Summary</i></h5>
+            When 50 random 5 subject group ICA runs (from a population of 23 subjects) are combined using RAICAR_N: <br><br>
+            <ul>
+                <li> We are able to declare 8 "standard" RSNs as significantly reproducible at a p-value < 0.05. <br><br> 
+                <li> There are 6 other "non-standard" RSNs that can be declared as significantly reproducible at a p-value < 0.05. <br><br>
+                <li> There is 1 other "non-standard" RSN that achieves a p-value of 0.05299. <br><br>
+            </ul>
+              
+                     
+        </ol>
+        
+        <hr><hr>
+        <h4 align="center">Random sets of 5 subjects - 100 group ICA runs</h4>
+		<hr><hr>        
+        <ol>        
+          <li> <h5><i>Reproducibility p-values</i></h5>
+          
+              5 subjects were drawn at random from the group of 23 subjects and submitted to a temporal concatenation based group ICA. This process was repeated 100 times and the resulting set of 100 group ICA maps were submitted to a RAICAR_N analysis. 
+              ICA components were sorted according to their reproducibility and p-values were computed for each ICA component. <br><br>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="100groupof5/100_group_of_5_raicar.png" width="100%" alt="Null distribution of normalized reproducibility">
+                  </div>
+              </td>
+              <td>
+                  <div class="display_image">
+                  <img src="100groupof5/100_group_of_5_pval_raicar.png" width="100%" alt="RAICAR_N p-values">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>
+        
+          <li> <h5><i>Top 15 components with highest reproducibility compared with "standard" RSN maps found in literature</i></h5>
+          
+              <div style="text-align:center">
+              <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+              <tr>
+              <td>
+                  <div class="display_image">
+                  <img src="100groupof5/top15maps_summary_100.png" width="100%" alt="Top 15 high reproducibility maps">
+                  </div>
+              </td>
+              </tr>
+              </table>        
+              </div>   
+              
+          <li> <h5><i>Summary</i></h5>
+        When 100 random 5 subject group ICA runs (from a population of 23 subjects) are combined using RAICAR_N: <br><br>
+        <ul>
+            <li> We are able to declare 8 "standard" RSNs as significantly reproducible at a p-value < 0.05. <br><br> 
+            <li> There are 6 other "non-standard" RSNs that can be declared as significantly reproducible at a p-value < 0.05. <br><br>
+            <li> There is 1 other "non-standard" RSN that achieves a p-value of 0.05824. <br><br>
+        </ul>
+                       
+        </ol>        
+		</div>
+
+
+		<div class="download-code">
+		<h3>Download Webpage</h3>
+        A standalone version of this webpage for offline browsing can be downloaded here: <a STYLE="text-decoration:none" href="../raicar_N_webpage.zip">raicar_N_webpage.zip&nbsp<img src="zip_icon.png" height="20px"></a> under the terms of the <a href="#raicar_N_license">license</a> described below.        
+        <!--
+        Matlab code for doing a RAICAR_N analysis on the results of a set of ICA analyses to detect reproducible components can be downloaded here: <a STYLE="text-decoration:none" href="../../raicar_N_webpage_code_data.zip">raicar_N_webpage_code_data.zip&nbsp<img src="zip_icon.png" height="20px"></a>. This software is freely available under the terms of the <a href="#raicar_N_license">license</a> described below. This zip file includes the following directories:
+		
+		<p>
+		<h4>webpage</h4>
+		</p>
+
+		<p>
+		<h4>code</h4>		
+		</p>
+
+		<p>
+		<h4>data</h4>
+		</p>
+        -->
+
+		<p>
+		<h4><a name="raicar_N_license">License</a></h4> 		
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">RAICAR_N webpage and paper</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gautam V. Pendse</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+		</p>
+	
+		</div>
+
+		<div class="copyright">
+		<p align="center"> Copyright &#169; 2011, Gautam V. Pendse <br> e-mail: <font face="monospace">gpendse@mclean.harvard.edu</font> </p>
+		</div>
+
+	</body>
+    
+    <div id="preloaded-images">
+   		<img src="raicarN_logo.png" width="1" height="1" alt="" />
+   		<img src="1subj/raicar_raicar.png" width="1" height="1" alt="" />
+   		<img src="23subj/rest23_ero_raicar.png" width="1" height="1" alt="" />        
+       	<img src="1subj/raicar_pval_raicar.png" width="1" height="1" alt="" />
+   		<img src="23subj/rest23_ero_pval_raicar.png" width="1" height="1" alt="" /> 
+       	<img src="figures_pdf/choosing_L_A.png" width="1" height="1" alt="" />       
+   		<img src="figures_pdf/choosing_L_B.png" width="1" height="1" alt="" />       
+   		<img src="figures_pdf/gen_mix_fit1.png" width="1" height="1" alt="" />
+   		<img src="figures_pdf/gen_mix_fit2.png" width="1" height="1" alt="" />        
+   		<img src="23subj/rest23_ero_raicar.png" width="1" height="1" alt="" />
+   		<img src="23subj/rest23_ero_pval_raicar.png" width="1" height="1" alt="" />        
+   		<img src="23subj/top8maps_summary.png" width="1" height="1" alt="" />
+   		<img src="50groupof5/50_group_of_5_raicar.png" width="1" height="1" alt="" />
+   		<img src="50groupof5/50_group_of_5_pval_raicar.png" width="1" height="1" alt="" />
+   		<img src="50groupof5/top15maps_summary.png" width="1" height="1" alt="" />
+		<img src="100groupof5/100_group_of_5_raicar.png" width="1" height="1" alt="" />                
+   		<img src="100groupof5/100_group_of_5_pval_raicar.png" width="1" height="1" alt="" />        
+   		<img src="100groupof5/top15maps_summary_100.png" width="1" height="1" alt="" />                
+   		<img src="http://i.creativecommons.org/l/by/3.0/88x31.png" width="1" height="1" alt="" />   		
+	</div>
+    
+</html>

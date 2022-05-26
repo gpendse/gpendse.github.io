@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
+<html>
+
+	<head>
+		<title>Banded SVM</title>
+		<link rel="stylesheet" type="text/css" href="stylefile_bsvm_white.css" />
+	</head>
+	<body>
+		<div class="project-title">
+		<p><img src="bsvm_logo.png" title="BSVM logo" border="1" height="100px"></p>
+		<h2>BSVM: A Banded Support Vector Machine</h2>
+		<h3>Author: <a href="http://www.gautampendse.com">Gautam V. Pendse</a></h3>
+		</div>		
+
+		<div class="abstract">
+		<h3>Abstract</h3>
+		<p>
+			We describe a novel binary classication technique called Banded SVM (B-SVM). In the standard
+			C-SVM formulation of Cortes and Vapnik (1995), the decision rule is encouraged to lie in the interval
+			[1, &infin;]. The new B-SVM objective function contains penalty terms that encourage the decision rule
+			to lie in a user specied range [&rho;<sub>1</sub>, &rho;<sub>2</sub>]. In addition to the standard set of support vectors (SVs)
+			near the class boundaries, B-SVM results in a second set of SVs in the interior of each class.	
+		</p>
+        	<div class="demo">
+			<a STYLE="text-decoration:none" href="pendse_bsvm.pdf">Read about BSVM <img src="pdficon_large.gif" height="20px"></a>
+			</div>        
+		</div>		
+
+
+		<!--<div class="coreidea">
+		<h3>Main ideas</h3>
+		<ol>
+		<li> Point 1 <br><br>
+		<li> Point 2 <br><br>
+		<li> Point 3 <br><br>
+		</ol>
+		</div>-->
+		
+        <div class="examples">
+        <h3> Main ideas</h3>
+        
+        	<ol>
+        		<li> Scalar linear projections of multivariate random vectors with finite co-variance have a finite variance. <br><br>
+                <lI> Chebyshev's inequality implies that most of the values of the above scalar linear projection are <i>concentrated</i> around its mean.<br><br>
+                <li> If we consider the SVM decision rule as a measure of membership in class +1 and class -1 then the decision rule values should also be concentrated in each class.<br><br>
+                <li> The standard C-SVM objective function <i><b>does not enforce</b></i> this <i>band formation</i> in each class.<br><br>
+                <li> B-SVM includes a novel penalty term in the objective function that encourages class specific band formation and this leads to a novel Lagrangian dual optimization problem of which the C-SVM dual is a special case. <br><br>
+                
+                <div style="text-align:center">
+            	<table width="90%" border="0" cellspacing="2" cellpadding="2" align="center">
+            	<tr>
+            	<td>
+                	<div class="display_image">
+                	<img src="bsvm_main_ideas.png" width="100%" alt="BSVM logic">
+                	</div>
+            	</td>
+            	</tr>
+            	</table>        
+            	</div>
+        	</ol>
+      	</div>
+        
+        
+		<div class="refs">
+		<h3>Key references</h3>
+		<ol>		
+		<li> <b><i>Gautam V. Pendse</i></b>. BSVM: A Banded Support Vector Machine. <a STYLE="text-decoration:none" href="pendse_bsvm.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a>, <a href="http://arxiv.org/abs/1107.2347">arXiv:1107.2347v1</a>, 2011. (this work) <br><br>
+
+		<li> <b><i>B. E. Boser, I. M. Guyon and V. Vapnik</i></b>. A training algorithm for optimal margin classiers. <i>Proceedings of the 5th Annual ACM Workshop on Computational
+Learning Theory</i>, 144-152, 1992. <a STYLE="text-decoration:none" href="boser1992.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>
+
+		<li> <b><i>C. Cortes and V. Vapnik</i></b>. Support vector networks. <i>Machine Learning</i>, 20:273-297, 1995. <a STYLE="text-decoration:none" href="cortes1995.pdf">[pdf <img src="pdficon_large.gif" height="20px">]</a> <br><br>		
+		</ol>
+		</div>
+
+		<div class="figures">
+		<h3>PDF Figures</h3>
+		<ol>
+		<li> <a href="figures_captions_pdf/figure1.pdf">Figure1 [BSVM penalty function]</a>
+		<li> <a href="figures_captions_pdf/figure2.pdf">Figure2 [C-SVM vs. BSVM support vectors]</a>
+        <li> <a href="figures_captions_pdf/figure3.pdf">Figure3 [C-SVM vs. BSVM decision function and heat map]</a>
+        <li> <a href="figures_captions_pdf/figure4.pdf">Figure4 [C-SVM vs. BSVM sensitivity curve]</a>
+		</ol>
+		</div>
+
+		<div class="download-code">
+		<h3>Download Webpage and Data</h3>
+Toy data used for comparing C-SVM and B-SVM along with this webpage can be downloaded here: <a STYLE="text-decoration:none" href="../bsvm_webpage_data.zip">bsvm_webpage_data.zip&nbsp<img src="zip_icon.png" height="20px"></a>. This data is freely available under the terms of the <a href="#lasso_license">license</a> described below. This zip file includes the following directories:
+		
+		<p>
+		<h4>webpage</h4>
+This directory contains a standalone version of this webpage <font face="monospace">bsvm.html</font> for offline browsing.
+		</p>
+
+		<p>
+		<h4>data</h4>
+This directory contains a MATLAB .mat file: <font face="monospace">demo_data.mat</font> which contains the data used to generate Figure 2 and Figure 3. A <font face="monospace">README.m</font> file contains a brief description of the data.
+		</p>
+
+		<p>
+		<h4><a name="lasso_license">License</a></h4> 		
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">BSVM toy data and webpage</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gautam V. Pendse</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+		</p>
+	
+		</div>
+
+		<div class="copyright">
+		<p align="center"> Copyright &#169; 2011, Gautam V. Pendse <br> e-mail: <font face="monospace">gpendse@mclean.harvard.edu</font> </p>
+		</div>
+
+	</body>
+</html>
